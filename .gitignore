@@ -6,3 +6,6 @@ venv/
 
 # Config file with secrets
 config.json
+
+# ConUploadsfile 
+uploads/
