@@ -1,0 +1,8 @@
+# Ignore environment variables file
+.env
+
+# Ignore Python virtual environment directory
+venv/
+
+# Config file with secrets
+config.json
