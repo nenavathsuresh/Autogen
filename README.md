@@ -64,8 +64,8 @@ graph TD
         InsiteTool -->|REST API| RESTAPI
     end
 
-    subgraph Data Storage
-        RESTAPI --> AuditDB[(Audit Database)]
+    subgraph Insite Storage
+        RESTAPI --> AuditDB[(Audit storage)]
     end
 
     %% Feedback/Result Flow
