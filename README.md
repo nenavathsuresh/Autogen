@@ -62,7 +62,7 @@ graph TD
 
     subgraph Services
         InsiteTool -->|REST API| RESTAPI[Audit REST API]
-        InsiteTool -- ResultText[Result Text] --> Agent
+        InsiteTool -- Result --> Agent
         Agent -->|Transcript| Vidyard[Vidyard Platform]
     end
 
