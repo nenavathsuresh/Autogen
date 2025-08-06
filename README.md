@@ -13,6 +13,7 @@ This documentation outlines the high-level architecture for a tool built using t
 
 ## System Architecture Diagram
 The system is composed of the following primary components:
+
    -Agent Layer: Executes instructions defined in YAML to drive audit report actions.
 
    -MCP Interface: Receives instructions from the agent and coordinates interactions.  
