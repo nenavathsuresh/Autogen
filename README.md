@@ -51,52 +51,37 @@ graph TD
     end
 
     subgraph Core Application
-        CLI -->|Task/Command| AutoGenSDRAgentCLI
-        
-        subgraph AI Agents
-            AutoGenSDRAgentCLI --> SummarizationAgent
-            AutoGenSDRAgentCLI --> EmailGenerationAgent
-            
-            subgraph SummarizationAgent
-                SummaryUserProxy[UserProxyAgent]
-                SummaryAssistant[AssistantAgent]
-            end
-            
-            subgraph EmailGenerationAgent
-                EmailUserProxy[UserProxyAgent]
-                EmailAssistant[AssistantAgent]
-            end
+        CLI -->|Task/Command| Agent
+        subgraph MCP Orchestration
+            Agent --> MCP
         end
-        
-        subgraph Services
-            AutoGenSDRAgentCLI --> SalesforceService
-            AutoGenSDRAgentCLI --> GoogleDriveService
-            
-            subgraph DocumentHelpers
-                DocumentProcessing[Document Processing]
-                EmailGeneration[Email Generation]
-                FocusExtraction[Focus Points Extraction]
-            end
+        subgraph Tool Layer
+            MCP --> InsiteTool
         end
     end
-    
-    subgraph External Services
-        SalesforceService -->|REST API| Salesforce
-        GoogleDriveService -->|REST API| GoogleDrive
+
+    subgraph Services
+        InsiteTool -->|REST API| RESTAPI
     end
-    
+
     subgraph Data Storage
-        Models[Data Models]
-        Config[Configuration]
+        RESTAPI --> AuditDB[(Audit Database)]
     end
-    
-    AutoGenSDRAgentCLI --> Models
-    AutoGenSDRAgentCLI --> Config
-    
-    %% Document Helpers interactions
-    AutoGenSDRAgentCLI --> DocumentProcessing
-    AutoGenSDRAgentCLI --> EmailGeneration
-    AutoGenSDRAgentCLI --> FocusExtraction
+
+    %% Feedback/Result Flow
+    AuditDB --> RESTAPI
+    RESTAPI --> InsiteTool
+    InsiteTool --> MCP
+    MCP --> Agent
+    Agent --> CLI
+
+    %% Explicit labeling for each core step
+    click Agent "Represents the orchestrating core that parses YAML and triggers MCP"
+    click MCP "Model Context Protocol coordinating tool requests"
+    click InsiteTool "Business logic layer, communicates with backend REST API"
+    click RESTAPI "Backend for audit report creation and retrieval"
+    click AuditDB "Persistent storage/database for audit reports"
+
 ```
 
 ### 📋 Workflow
