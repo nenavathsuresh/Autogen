@@ -24,6 +24,7 @@ graph TD
 
 
 ### Data Flow Architecture
+```mermaid
 flowchart TD
     YAML[“YAML instruction”] --> Agent[Agent]
     Agent --> MCP[MCP orchestration]
@@ -65,6 +66,7 @@ classDiagram
     MCP -- Insite
     Insite -- AuditAPI
     AuditAPI -- Database
+```
 
 ## ⚡ Sequence Diagram: Create and Fetch Audit Report
 mermaid
