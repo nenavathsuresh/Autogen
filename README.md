@@ -1,36 +1,11 @@
-# AutoGen SDR Agent
-
-[![Python Version](https://img.shields.io/badge/python-3.9%2B-blue)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-
-An intelligent AI-powered Sales Development Representative (SDR) agent that automates prospect research, personalized outreach, and follow-ups by integrating Microsoft's AutoGen framework with Salesforce and Google Drive.
-
 ## MCP Audit Report Tool Architecture
 This documentation provides a high-level explanation of an audit report creation and retrieval tool. It is built with the Model Context Protocol (MCP), using YAML‑driven orchestration, an Insite REST tool, and a backend Audit API.
 
 ## 📃 Table of Contents
-- [✨ Features](#-features)
-- [🏗️ Architecture Overview](#%EF%B8%8F-architecture--overview)
+- [✨ Architecture Overview](#-features)
+- [🏗️ Architecture & Workflow](#%EF%B8%8F-architecture--workflow)
   - [🛠️ System Architecture](#%EF%B8%8F-system-architecture)
-  - [📋 Workflow](#-workflow)
-- [🚀 Quick Start](#-quick-start)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [⚙️ Configuration](#%EF%B8%8F-configuration)
-- [🛠️ Usage](#%EF%B8%8F-usage)
-  - [Command Line Interface](#command-line-interface)
-  - [Python API](#python-api)
-- [🔧 Available Agent Functions](#available-agent-functions)
-  - [Salesforce Operations](#salesforce-operations)
-  - [Google Drive Integration](#google-drive-integration)
-  - [AI-Powered Functions](#ai-powered-functions)
-  - [Utility Functions](#utility-functions)
-- [🧩 Project Structure](#-project-structure)
-- [🧪 Testing](#-testing)
-- [🙏 Acknowledgments](#-acknowledgments)
-- [📜 License](#-license)
-- [🤝 Contributing](#-contributing)
+  - [🛠️ Workflow](#%EF%B8%8F-workflow)
 
 
 ## Architecture Overview
