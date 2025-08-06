@@ -9,8 +9,14 @@ This documentation provides a high-level explanation of an audit report creation
 
 
 ## Architecture Overview
-Purpose:
-To create and fetch audit reports through a modular, layered system where the Agent, MCP, Insite tool, and REST API interact via clearly separated responsibilities.
+  -This documentation outlines the high-level architecture for a tool built using the Model Context Protocol (MCP) that        creates and fetches audit reports via an insite tool and REST API calls.
+
+## System Architecture Diagram
+ -The system is composed of the following primary components:
+   -Agent Layer: Executes instructions defined in YAML to drive audit report actions.
+   -MCP Interface: Receives instructions from the agent and coordinates interactions.  
+   -Insite Tool Service: Acts as an intermediary, executing tasks upon request from the MCP. 
+   -REST API Backend: Provides endpoints to create and retrieve audit reports, ultimately interfacing with the database or      reporting system.
 
 
 ## 🏗️ Architecture & Workflow
