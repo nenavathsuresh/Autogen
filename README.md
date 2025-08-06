@@ -9,10 +9,10 @@ This documentation provides a high-level explanation of an audit report creation
 
 
 ## Architecture Overview
-  -This documentation outlines the high-level architecture for a tool built using the Model Context Protocol (MCP) that        creates and fetches audit reports via an insite tool and REST API calls.
+This documentation outlines the high-level architecture for a tool built using the Model Context Protocol (MCP) that        creates and fetches audit reports via an insite tool and REST API calls.
 
 ## System Architecture Diagram
- -The system is composed of the following primary components:
+The system is composed of the following primary components:
    -Agent Layer: Executes instructions defined in YAML to drive audit report actions.
 
    -MCP Interface: Receives instructions from the agent and coordinates interactions.  
