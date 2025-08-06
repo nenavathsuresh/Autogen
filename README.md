@@ -62,13 +62,14 @@ graph TD
 
     subgraph Services
         InsiteTool -->|REST API| RESTAPI[Audit REST API]
+        Agent -->|Transcript| Vidyard[Vidyard Platform]
     end
 
-    %% Response/data flow returns through the same modules
+    %% Response/data flow returns to Agent, then CLI
     RESTAPI --> InsiteTool
-    InsiteTool --> MCP
-    MCP --> Agent
+    InsiteTool --> Agent
     Agent --> CLI
+
 
 
 ```
