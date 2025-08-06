@@ -5,7 +5,7 @@ This documentation provides a high-level explanation of an audit report creation
 - [✨ Architecture Overview](#-features)
 - [🏗️ Architecture & Workflow](#%EF%B8%8F-architecture--workflow)
   - [🛠️ System Architecture](#%EF%B8%8F-system-architecture)
-  - [🛠️ Workflow](#%EF%B8%8F-workflow)
+  - [🛠️ Workflow](#-workflow)
 
 
 ## Architecture Overview
