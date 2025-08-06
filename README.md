@@ -14,8 +14,11 @@ This documentation provides a high-level explanation of an audit report creation
 ## System Architecture Diagram
  -The system is composed of the following primary components:
    -Agent Layer: Executes instructions defined in YAML to drive audit report actions.
+
    -MCP Interface: Receives instructions from the agent and coordinates interactions.  
+   
    -Insite Tool Service: Acts as an intermediary, executing tasks upon request from the MCP. 
+   
    -REST API Backend: Provides endpoints to create and retrieve audit reports, ultimately interfacing with the database or      reporting system.
 
 
