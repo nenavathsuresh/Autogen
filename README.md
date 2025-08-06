@@ -76,6 +76,7 @@ sequenceDiagram
     participant MCP
     participant InsiteTool
     participant RESTAPI
+    participant Vidyard
 
     Agent->>MCP: Call (via YAML-defined instruction for insites)
     MCP->>InsiteTool: Forward parsed instruction
@@ -83,6 +84,8 @@ sequenceDiagram
     RESTAPI-->>InsiteTool: Return audit report data/result
     InsiteTool-->>MCP: Pass result upstream
     MCP-->>Agent: Deliver response/output
+    Agent->>Vidyard: Send result/transcript for video
+
 
 
 ```
