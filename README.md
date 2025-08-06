@@ -65,11 +65,10 @@ classDiagram
     MCP -- Insite
     Insite -- AuditAPI
     AuditAPI -- Database
-    
+
 ## ⚡ Sequence Diagram: Create and Fetch Audit Report
 mermaid
-Copy
-Edit
+
 sequenceDiagram
     participant Agent
     participant MCP
