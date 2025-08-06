@@ -75,26 +75,14 @@ sequenceDiagram
 - pip (Python package manager)
 
 #### API Access
-- **Salesforce**
-  - Salesforce Developer/Production org with API access enabled
-  - Connected App with OAuth2 credentials (Client ID and Client Secret)
-  - JWT Bearer Flow enabled in Salesforce Connected App settings
-  - User with appropriate permissions (API Enabled, Manage Users, and other required permissions)
-  - Private key and certificate for JWT authentication
+-API Access
+  -Audit REST API
+    -Access to the backend Audit REST API endpoint (URL, credentials/tokens as required)
+   -User or service account with permission to create/fetch audit reports
 
-- **Google Cloud Platform**
-  - Google Cloud Project with Google Drive API enabled
-  - OAuth 2.0 Client ID credentials
-  - Service account credentials file (JSON)
-
-- **OpenAI**
-  - OpenAI API key with access to GPT models
-  - Sufficient credits/balance for API usage
-
-#### Required Files
-- Private key file for Salesforce JWT authentication
-- Google service account credentials JSON file
-- `.env` file with all necessary configurations
+ -Insite Tool
+    -Local or remote deployment configuration for the Insite Tool Python/Node.js service
+    -Network access so the Insite Tool can reach the Audit REST API
 
 ### Installation
 
