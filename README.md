@@ -104,60 +104,33 @@ graph TD
 ```mermaid
 sequenceDiagram
     participant YAML
-    participant MCP 
-    participant AutoGenCLI
-    participant DocumentHelpers
-    participant SummarizationAgent
-    participant EmailAgent
-    participant Salesforce
-    participant GoogleDrive
-    
-    YAML->>CLI: run-task "Instruction"
-    
+    participant MCP
+    participant Agent
+    participant InsiteTool
+    participant RESTAPI
+    participant DataStore
+
+    YAML->>Agent: run-task "Instruction"
+
     %% Initialization and Setup
-    MCP->>AutoGenCLI: Initialize agents and services
-    
-    %% 1. Fetch Best Practices
-    AutoGenCLI->>GoogleDrive: Retrieve best practices document
-    GoogleDrive-->>AutoGenCLI: Return document content
-    AutoGenCLI->>DocumentHelpers: Process document
-    DocumentHelpers->>SummarizationAgent: Request summarization
-    SummarizationAgent-->>DocumentHelpers: Return summary
-    DocumentHelpers-->>AutoGenCLI: Return best practices summary
-    
-    %% 2. Analyze Requirements
-    AutoGenCLI->>DocumentHelpers: Extract focus points
-    DocumentHelpers-->>AutoGenCLI: Return key requirements
-    
-    %% 3. Account Lookup
-    AutoGenCLI->>Salesforce: Query account details
-    Salesforce-->>AutoGenCLI: Return account data
-    
-    %% 4. Contact Retrieval
-    AutoGenCLI->>Salesforce: Get contacts for account
-    Salesforce-->>AutoGenCLI: Return contact information
-    
-    %% 5. Document Analysis
-    AutoGenCLI->>GoogleDrive: Search for related case studies
-    GoogleDrive-->>AutoGenCLI: Return document content
-    AutoGenCLI->>DocumentHelpers: Process documents
-    DocumentHelpers->>SummarizationAgent: Request case study summarization
-    SummarizationAgent-->>DocumentHelpers: Return summaries
-    DocumentHelpers-->>AutoGenCLI: Return case study summaries
-    
-    %% 6. Content Generation
-    AutoGenCLI->>EmailAgent: Generate email content
-    EmailAgent->>DocumentHelpers: Format email body
-    DocumentHelpers-->>EmailAgent: Return formatted content
-    EmailAgent-->>AutoGenCLI: Return email draft
-    
-    %% 7. Email Dispatch
-    AutoGenCLI->>Salesforce: Send email to contact
-    Salesforce-->>AutoGenCLI: Confirm email sent
-    
-    %% Completion
-    AutoGenCLI-->>CLI: Task completed with results
-    CLI-->>User: Display success summary
+    Agent->>MCP: Initialize and parse instructions
+
+    %% 1. MCP Processes Instruction
+    MCP->>InsiteTool: Call to create or fetch report
+
+    %% 2. Insite Tool Calls REST API
+    InsiteTool->>RESTAPI: API call to create/fetch audit report
+    RESTAPI-->>InsiteTool: Return report data/confirmation
+
+    %% 3. Data Store Interaction
+    RESTAPI->>DataStore: Store/Retrieve report data
+    DataStore-->>RESTAPI: Confirm data operation
+
+    %% 4. Response Propagation
+    InsiteTool-->>MCP: Return report results
+    MCP-->>Agent: Forward results
+    Agent-->>YAML: Display or use output
+
 ```
 
 ## 🚀 Quick Start
