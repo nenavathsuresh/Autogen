@@ -303,3 +303,49 @@ This architecture decouples command orchestration (Agent → MCP) from operation
 
 > **Tip:** Paste these Mermaid diagrams in any Markdown file (e.g. `audit_report_architecture.md`). They will render in GitHub, GitLab, or the Mermaid Live Editor. If you need deployment or integration diagrams, just ask!
 
+
+```mermaid
+graph TB
+    subgraph "User Interface"
+        CLI[CLI Interface]
+        WEB[Web Interface]
+    end
+
+    subgraph "Core Application"
+        subgraph "AI Agents"
+            TA[Task Agent]
+            EA[Email Agent]
+            SA[Summarization Agent]
+        end
+        
+        subgraph "Services"
+            SS[Salesforce Service]
+            GS[Google Drive Service]
+            SES[Seismic Service]
+        end
+        
+        subgraph "Utilities"
+            DH[Document Helpers]
+            EH[Email Helpers]
+            UH[Utility Helpers]
+        end
+    end
+
+    subgraph "External Services"
+        SF[Salesforce]
+        GD[Google Drive]
+        SE[Seismic]
+        OAI[OpenAI]
+    end
+
+    CLI --> TA
+    WEB --> TA
+    TA --> SS
+    TA --> GS
+    TA --> SES
+    SS --> SF
+    GS --> GD
+    SES --> SE
+    TA --> OAI
+```
+
