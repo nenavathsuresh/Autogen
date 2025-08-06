@@ -62,13 +62,12 @@ graph TD
 
     subgraph Services
         InsiteTool -->|REST API| RESTAPI[Audit REST API]
+        InsiteTool -->|Result Text| ResultText[Result Text]
+        ResultText --> Agent
         Agent -->|Transcript| Vidyard[Vidyard Platform]
-        Agent -->|Result Text| ResultText[Result Text Output]
     end
 
-    %% Response/data flow returns to Agent
-    RESTAPI --> InsiteTool
-    InsiteTool --> Agent
+    %% Data flow: REST API (backend) returns to Insite Tool, which produces Result Text passed to Agent, enabling transcript delivery to Vidyard.
 
 ```
 
