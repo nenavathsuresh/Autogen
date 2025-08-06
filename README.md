@@ -61,26 +61,15 @@ graph TD
     end
 
     subgraph Services
-        InsiteTool -->|REST API| RESTAPI
+        InsiteTool -->|REST API| RESTAPI[Audit REST API]
     end
 
-    subgraph Insite Storage
-        RESTAPI --> AuditDB[(Audit storage)]
-    end
-
-    %% Feedback/Result Flow
-    AuditDB --> RESTAPI
+    %% Response/data flow returns through the same modules
     RESTAPI --> InsiteTool
     InsiteTool --> MCP
     MCP --> Agent
     Agent --> CLI
 
-    %% Explicit labeling for each core step
-    click Agent "Represents the orchestrating core that parses YAML and triggers MCP"
-    click MCP "Model Context Protocol coordinating tool requests"
-    click InsiteTool "Business logic layer, communicates with backend REST API"
-    click RESTAPI "Backend for audit report creation and retrieval"
-    click AuditDB "Persistent storage/database for audit reports"
 
 ```
 
