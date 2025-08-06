@@ -46,12 +46,12 @@ The system follows a modular architecture with clear separation of concerns:
 
 ```mermaid
 graph TD
-    subgraph User Interface
-        CLI[CLI Interface]
+    subgraph Entry Point
+        YAML[YAML Instruction]
     end
 
     subgraph Core Application
-        CLI -->|Task/Command| Agent
+        YAML --> Agent
         subgraph MCP Orchestration
             Agent --> MCP
         end
@@ -63,14 +63,12 @@ graph TD
     subgraph Services
         InsiteTool -->|REST API| RESTAPI[Audit REST API]
         Agent -->|Transcript| Vidyard[Vidyard Platform]
+        Agent -->|Result Text| ResultText[Result Text Output]
     end
 
-    %% Response/data flow returns to Agent, then CLI
+    %% Response/data flow returns to Agent
     RESTAPI --> InsiteTool
     InsiteTool --> Agent
-    Agent --> CLI
-
-
 
 ```
 
