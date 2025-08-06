@@ -103,33 +103,18 @@ graph TD
 
 ```mermaid
 sequenceDiagram
-    participant YAML
-    participant MCP
     participant Agent
+    participant MCP
     participant InsiteTool
     participant RESTAPI
-    participant DataStore
 
-    YAML->>Agent: run-task "Instruction"
+    Agent->>MCP: Call (via YAML-defined instruction for insites)
+    MCP->>InsiteTool: Forward parsed instruction
+    InsiteTool->>RESTAPI: REST API call (create/fetch audit report)
+    RESTAPI-->>InsiteTool: Return audit report data/result
+    InsiteTool-->>MCP: Pass result upstream
+    MCP-->>Agent: Deliver response/output
 
-    %% Initialization and Setup
-    Agent->>MCP: Initialize and parse instructions
-
-    %% 1. MCP Processes Instruction
-    MCP->>InsiteTool: Call to create or fetch report
-
-    %% 2. Insite Tool Calls REST API
-    InsiteTool->>RESTAPI: API call to create/fetch audit report
-    RESTAPI-->>InsiteTool: Return report data/confirmation
-
-    %% 3. Data Store Interaction
-    RESTAPI->>DataStore: Store/Retrieve report data
-    DataStore-->>RESTAPI: Confirm data operation
-
-    %% 4. Response Propagation
-    InsiteTool-->>MCP: Return report results
-    MCP-->>Agent: Forward results
-    Agent-->>YAML: Display or use output
 
 ```
 
